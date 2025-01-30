@@ -135,6 +135,13 @@ TrackExtraHistograms = cms.PSet(
             inputVariables = cms.vstring("bestTrackMissingOuterHits", "caloNewNoPUDRp5CentralCalo"),
             ),
         cms.PSet (
+            name = cms.string("trackFitPlaneWithCaloJet"),
+            title = cms.string("Number of Missing Outer Hits;N_{miss}^{out};matchedCaloJetEmEnergy+matchedCaloJetHadEnergy [GeV]"),
+            binsX = cms.untracked.vdouble(16, -0.5, 15.5),
+            binsY = cms.untracked.vdouble(100, 0, 100),
+            inputVariables = cms.vstring("bestTrackMissingOuterHits", "matchedCaloJetEmEnergy + matchedCaloJetHadEnergy"),
+            ),
+        cms.PSet (
             name = cms.string("trackNHitsMissingOuter"),
             title = cms.string("Number of Missing Outer Hits;N_{miss}^{out}"),
             binsX = cms.untracked.vdouble(16, -0.5, 15.5),
@@ -262,6 +269,12 @@ TrackExtraHistograms = cms.PSet(
             title = cms.string("Relative isolation energy (PU corr.);E_{calo}^{#DeltaR<0.5}/p"),
             binsX = cms.untracked.vdouble(100, 0, 2),
             inputVariables = cms.vstring("caloNewNoPUDRp5CentralCalo / p"),
+            ),
+        cms.PSet (
+            name = cms.string("trackCaloJetEnergy"),
+            title = cms.string("Isolation energy calculated using matchedCaloJetEmEnergy+matchedCaloJetHadEnergy"),
+            binsX = cms.untracked.vdouble(100, 0, 100),
+            inputVariables = cms.vstring("matchedCaloJetEmEnergy + matchedCaloJetHadEnergy"),
             ),
         cms.PSet (
             name = cms.string("trackPtError"),
@@ -1180,7 +1193,7 @@ DiMuonExtraHistograms = cms.PSet(
     inputCollection = cms.vstring("muons", "muons"),
     histograms = cms.VPSet (
         cms.PSet (
-            name = cms.string("diMuonPt"),
+            name = cms.string("diMuonPtWide"),
             title = cms.string("Di-muon pT;p_{T} (#mu#mu)"),
             binsX = cms.untracked.vdouble(5000, 0, 5000),
             inputVariables = cms.vstring("pT (muon, muon)")
